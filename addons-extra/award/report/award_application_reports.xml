@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>        
+        <report 
+            string="Award Application PDF" 
+            id="action_report_application_pdf" 
+            model="award.application.form" 
+            report_type="qweb-pdf"
+            name="award.report_application_pdf" 
+            file="award.report_application_pdf"
+            menu ="False"
+            print_report_name="
+                '%s' % (object.name) + '-' + time.strftime('%d-%m-%Y %H:%M:%S')"
+        />
+
+    </data>
+</odoo>

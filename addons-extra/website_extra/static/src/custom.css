@@ -1,0 +1,180 @@
+/*** Senthil Code ***/
+
+.oe_img_bg {
+	background-size: contain !important;
+}
+
+@media screen and (min-width: 1024px) {
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		min-height: 590px !important;
+		/* min-width: 1400px */
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		min-height: 590px !important;
+		/* min-width: 1400px */
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		min-height: 590px !important;
+		/* min-width: 1600px */
+	}
+}
+
+@media screen and (min-width: 1900px) {
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		min-height: 590px !important;
+		/* min-width: 1900px */
+	}
+}
+
+@media (min-width:320px) {
+	/* smartphones, iPhone, portrait 480x320 phones */
+	.carousel-item.oe_img_bg.oe_custom_bg {}
+}
+
+@media (min-width:481px) {
+	/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+	.carousel-item.oe_img_bg.oe_custom_bg {}
+}
+
+@media (min-width:823px) {
+	/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		min-height: 390px !important;
+	}
+}
+
+@media (min-width:641px) {
+	/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		min-height: 390px !important;
+	}
+}
+
+@media (min-width:961px) {
+	/* tablet, landscape iPad, lo-res laptops ands desktops */
+	.carousel-item.oe_img_bg.oe_custom_bg {}
+}
+
+@media (min-width:1025px) {
+	/* big landscape tablets, laptops, and desktops */
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		min-height: 590px !important;
+		/* min-width: 1900px */
+	}
+}
+
+@media (min-width:1152px) {
+	/* big landscape tablets, laptops, and desktops */
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		min-height: 470px !important;
+		/* min-width: 1900px */
+	}
+}
+
+@media (min-width:1281px) {
+	/* hi-res laptops and desktops */
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		min-height: 590px !important;
+		/* min-width: 1900px */
+	}
+}
+
+@media (max-width: 767px) {
+	.carousel-inner.cust-heightinner {
+		height: 290px !important;
+	}
+	.carousel-item.oe_img_bg.oe_custom_bg.cust-minheight {
+		min-height: 290px !important;
+	}
+}
+
+@media only screen and (max-width: 823px) and (min-width: 643px) {
+	.carousel-item.oe_img_bg.oe_custom_bg.cust-minheight {
+		min-height: 335px !important;
+	}
+	.carousel-inner .container .caption h2 {
+		font-size: 23px;
+		font-weight: 700;
+		color: white;
+		margin-bottom: 30px;
+		line-height: 90%;
+		margin-right: 22%;
+	}
+}
+@media (min-width:360px) {
+	/* hi-res laptops and desktops */
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		 background-size: cover !important;
+		/* min-width: 1900px */
+	}
+}
+@media (min-width:1200px) {
+	/* hi-res laptops and desktops */
+	.carousel-item.oe_img_bg.oe_custom_bg {
+		 background-size: cover !important;
+		/* min-width: 1900px */
+	}
+}
+@media only screen and (max-width: 1800px) and (min-width: 1600px) {
+	.carousel-item.oe_img_bg.oe_custom_bg.cust-minheight {
+	    background-size: cover !important;
+	}
+
+}
+@media only screen and (max-width: 1600px) and (min-width: 1280px) {
+	.carousel-item.oe_img_bg.oe_custom_bg.cust-minheight {
+	    background-size: cover !important;
+	}
+
+}
+
+@media only screen and (max-width: 767px) and (min-width: 360px) {
+	.carousel-item.oe_img_bg.oe_custom_bg.cust-minheight {
+	    background-size: cover !important;
+	    min-height: 150px !important;
+	}
+	
+	.carousel-inner.cust-heightinner {
+    height: 150px !important;
+}
+
+}
+
+@media (max-width: 720px) {
+	.carousel-inner.cust-heightinner {
+		
+	}
+	
+}
+@media (max-width: 767px) {
+	.carousel-inner.cust-heightinner {
+		height: 290px !important;
+	}
+	.carousel-item.oe_img_bg.oe_custom_bg.cust-minheight {
+		min-height: 290px !important;
+	}
+
+}
+
+.parallax > .s_parallax_bg {
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+display: block;
+background-color: inherit;
+background-size: cover !important;
+background-attachment: scroll;
+pointer-events: none;
+}
+
+. oe_custom_bg{
+background-size: cover !important;
+}

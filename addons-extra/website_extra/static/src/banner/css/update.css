@@ -1,0 +1,52 @@
+﻿#homebanner .slide {    
+    height: initial; 
+}
+#home--section--6 .wid{
+    /* max-height: 420px; */
+}
+
+@media (max-width: 991px) {
+    #home--section--6 .wid {
+        max-height: initial;
+    }
+}
+
+#about--section--8 .board_slider .board--slider--slide{
+    height: initial;
+}
+
+/*.col2--layout .imgwrap img{
+    max-height: 442px;
+}*/
+
+ 
+
+#cta p a.donate {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    color: white;
+    text-transform: uppercase;
+    background: #3F7FC4;
+    padding: 0px 35px;
+    border-radius: 6px;
+    position: relative;
+}
+
+    #cta p a.donate::after {
+        content: '';
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        background: url('../images/drop.svg')no-repeat center left;
+        background-size: 18px;
+        left: -8px;
+        bottom: -3px;
+    }
+    

@@ -1,0 +1,45 @@
+.shadow {
+  -webkit-box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.06);
+}
+.shadow_lite {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.06);
+}
+.button--style {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+#winner-details--section--2 .imgwrap img {
+  height: auto!important;
+}
+#login-register .register-container {
+  display: block !important;
+}
+#login-register .register_wrap a {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  background: none;
+  color: #D3B85D;
+  background: #F4F4F4;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+}
+/*# sourceMappingURL=grid.css.map */

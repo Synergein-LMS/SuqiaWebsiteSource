@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Assets -->
+
+<template id="_assets_frontend_helpers_inherit" inherit_id="web._assets_frontend_helpers">
+    <xpath expr="//link" position="after">
+        <t t-if="request.lang.name == 'English (US)'">
+            <link rel="stylesheet" type="text/scss" href="/website_extra/static/src/scss/en_custom.scss"/>
+        </t>
+        <t t-if="not request.lang.name == 'English (US)'">
+            <link rel="stylesheet" type="text/scss" href="/website_extra/static/src/scss/ar_custom.scss"/>
+        </t>
+        <link href="/website_extra/static/src/banner/css/slick.css" rel="stylesheet"/>
+        <script type="text/javascript" src="/website_extra/static/src/banner/js/slick.min.js"></script>
+        <link rel="stylesheet" href="/survey_extras/static/src/css/waitMe.min.css"/>
+        <script type="text/javascript" src="/survey_extras/static/src/js/waitMe.min.js"/>
+    </xpath>
+</template>
+
+<!-- <template id="assets_backend_inherit" inherit_id="web.assets_backend"> -->
+<!--<template id="assets_frontend_inherit" inherit_id="web.assets_frontend">
+    <xpath expr="//script[last()]" position="after">
+        <t t-if="request.lang.name == 'English (US)'">
+            <link rel="stylesheet" type="text/scss" href="/website_extra/static/src/scss/en_custom.scss"/>
+        </t>
+        <t t-if="not request.lang.name == 'English (US)'">
+            <link rel="stylesheet" type="text/scss" href="/website_extra/static/src/scss/ar_custom.scss"/>
+        </t>
+        <link href="/website_extra/static/src/banner/css/slick.css" rel="stylesheet"/>
+        <script type="text/javascript" src="/website_extra/static/src/banner/js/slick.min.js"></script>
+    </xpath>
+</template>-->
+
+</odoo>

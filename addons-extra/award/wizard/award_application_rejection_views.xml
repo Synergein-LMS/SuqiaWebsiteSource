@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="award_application_rejection_view_form" model="ir.ui.view">
+            <field name="name">award.application.rejection.form</field>
+            <field name="model">award.application.rejection</field>
+            <field name="arch" type="xml">
+                <form string="Rejection Reason">
+                    <group class="oe_title">
+                        <field name="rejection_id" required="1" options="{'no_open':True,'no_create': True}"/>
+                        <field name="rejection_remarks"/>
+                    </group>
+                    <footer>
+                        <button name="action_rejection_reason" string="Submit" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="award_application_rejection_action" model="ir.actions.act_window">
+            <field name="name">Rejection Reason</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">award.application.rejection</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="award_application_rejection_view_form"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

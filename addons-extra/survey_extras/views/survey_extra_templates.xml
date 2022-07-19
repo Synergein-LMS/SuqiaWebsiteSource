@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Hide the conditional questions by default -->
+        <!-- <template id="survey_conditional" inherit_id="survey.question"> -->
+        <template id="survey_conditional" inherit_id="survey.question">
+            <xpath expr="//div[hasclass('js_question-wrapper')]" position="before">
+                <script t-if="question.conditional" type="text/javascript">
+                    setTimeout(function() {
+                       $("input[name='<t t-esc="question.survey_id.id"/>_<t t-esc="question.conditional_question_id.id"/>']").click(function() {
+                           if (this.value == "<t t-esc="question.conditional_option_id.id"/>") {
+                                
+                               //Show the conditional question
+                               $("div[id='<t t-esc="question.survey_id.id"/>_<t t-esc="question.id"/>']").css('display', 'inline-block');
+                           } else {
+                               //Hide the question if they go back and change their choice
+                               $("div[id='<t t-esc="question.survey_id.id"/>_<t t-esc="question.id"/>']").css('display', 'none');
+                           }
+                       });
+                   }, 2000);
+                </script>
+            </xpath>
+            <xpath expr="//div[@class='js_question-wrapper']" position="attributes">
+                <attribute name="t-attf-style">#{question.conditional and 'display:none;' ''}</attribute>
+            </xpath>
+            <xpath expr="//div[@class='js_errzone alert alert-danger']" position="before">
+                <t t-if="question.question_type == 'binary'"><t t-call="survey_extras.binary"/></t>
+            </xpath>
+            <xpath expr="//div[@class='js_errzone alert alert-danger']" position="after">
+                <br/>
+            </xpath>
+        </template>
+
+        <template id="binary" name="Binary">
+            <input class="input-file" id="my-file" type="file" t-att-name="prefix"/>
+            <!-- <script type="text/javascript">
+                var uploadField = document.getElementById("my-file");
+
+                uploadField.onchange = function() {
+                    if(this.files[0].size/1024/1024 > <t t-esc="question.attachment_size"/>){
+                       alert("File is too big!");
+                       this.value = "";
+                    };
+                };
+            </script> -->
+            <!-- var filePath=$('#my-file').val(); -->
+        </template>
+
+        <!-- For Add pattern attribute in odoo standard textbox -->
+        <template id="tmpl_sh_textbox_for_pattern"  inherit_id="survey.textbox" name="Text box">
+            <xpath expr="//input[@type='text']" position="replace">
+
+
+                <t t-if="question.validation_is_sh_textbox_pattern">
+                    <input type="text" t-attf-pattern="#{question.validation_sh_textbox_pattern}" t-attf-placeholder="#{question.validation_sh_textbox_placeholder}" class="form-control" t-att-name="prefix"/>
+                </t>
+                <t t-if="question.validation_is_sh_textbox_pattern == False">
+                    <input type="text" class="form-control" t-att-name="prefix"/>
+                </t>
+
+            </xpath>
+        </template>
+        <template id="survey.sfinished" name="Survey Finished">
+            <t t-call="survey.layout">
+                <div class="wrap">
+                    <div class="container">
+                        <t t-call="survey.back" />
+                        <div class="jumbotron mt32">
+                            <h1>Thank you!</h1>
+                            <div t-field="survey.thank_you_message" class="oe_no_empty" />
+                            <a href="/my/home">Back to my account</a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

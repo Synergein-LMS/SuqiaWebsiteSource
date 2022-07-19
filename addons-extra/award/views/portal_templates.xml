@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="portal_my_home_menu_award" name="Portal layout : sales menu entries" inherit_id="portal.portal_breadcrumbs" priority="26">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'application' or award_application_form" t-attf-class="breadcrumb-item #{'active ' if not award_application_form else ''}">
+                <a t-if="award_application_form" t-attf-href="/my/application?{{ keep_query() }}">Application</a>
+                <t t-else="">Application</t>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_award_application" name="Portal My Home : Application entries" inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="application_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Award Applications</t>
+                <t t-set="url" t-value="'/my/application'"/>
+            </t>
+            <t t-if="not application_count">
+                <div  style="padding-top:20px;">
+                    <p>There are currently no application(s) from your account.</p>
+                </div>
+            </t>
+            <div class="text-left" style="padding-top:60px;">
+                <button class="btn btn-primary">
+                    <a class="text-left" href="http://206.189.141.149:9070/survey/start/e006585a-0104-43ab-a3b3-63592039f9e8" style="color:white;">APPLY NOW</a>
+                </button>
+            </div>
+            <div class="text-left" style="padding-top:60px;">
+                <t t-if="survey">
+                    <div>
+                        <h3>Incomplete Award Application</h3>
+                    </div>                
+                    <t t-foreach="survey" t-as="survey_fill">
+                        <div style="padding-top:10px;">
+                            <a  t-att-href="'/survey/fill/%s/%s' % (survey_fill.survey_id.access_token, survey_fill.token)" style="color:white;" target="new">
+                                <button class="btn btn-primary" string="start" style="width: 70%;">
+                                    Continue: (<t t-esc="survey_fill.create_date.strftime('%d-%m-%Y %H:%M:%S')"/>)
+                                </button>
+                            </a>
+                        </div>
+                    </t>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    
+    <template id="portal_my_application" name="Portal: My Applications">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Applications</t>
+            </t>
+            <t t-if="application" t-call="portal.portal_table">
+                <table class="table table-sm" id="application_table">
+                    <thead style="background-color:#7C7BAD;color:white;">
+                        <tr class="active">
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">View Application</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="application" t-as="application">
+                            <tr>
+                                <td class="text-center"><t t-esc="application.name"/></td>
+                                <t t-if="application.state == 'draft'">
+                                    <td class="text-center">Screening</td>
+                                </t>
+                                <t t-if="application.state == 'first_review'">
+                                    <td class="text-center">Stage 1 Review</td>
+                                </t>
+                                <t t-if="application.state == 'second_review'">
+                                    <td class="text-center">Stage 2 Review</td>
+                                </t>
+                                <t t-if="application.state == 'final_review'">
+                                    <td class="text-center">Final Review</td>
+                                </t>
+                                <t t-if="application.state == 'finalist'">
+                                    <td class="text-center">Awarded</td>
+                                </t>
+                                <t t-if="application.state == 'cancel'">
+                                    <td class="text-center">Rejected</td>
+                                </t>
+                                <td class="text-center">
+                                    <a class="text-left" t-att-href="'/survey/print/%s?answer_token=%s' % (application.survey_id.access_token, application.token)">
+                                        <i class="fa fa-file"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <div id="award_application_communication" class="mt-4" style="padding:30px;">
+                    <h2>History</h2>
+                    <t t-call="portal.message_thread">
+                        <t t-set="object" t-value="application.partner_id"/>
+                    </t>
+                </div>
+            </t>            
+        </t>
+    </template>
+
+</odoo>

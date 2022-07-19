@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="dubaipay_reconciliation_view_form" model="ir.ui.view">
+        <field name="name">dubaipay.reconciliation.form</field>
+        <field name="model">dubaipay.reconciliation</field>
+        <field name="arch" type="xml">
+            <form string="Dubaipay Reconciliation">
+                <group class="oe_title">
+                    <field name="from_date" required="1"/>
+                    <field name="to_date" required="1"/>
+                    <field name="status" required="1"/>
+                </group>
+                <footer>
+                    <button name="download_xml_file" string="Download" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="dubaipay_reconciliation_action" model="ir.actions.act_window">
+        <field name="name">Dubaipay Reconciliation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dubaipay.reconciliation</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="dubaipay_reconciliation_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="reconciliation_menu"
+      action="dubaipay_reconciliation_action"
+      parent='account.root_payment_menu'
+      name="DubaiPay Reconciliation"
+      sequence="21"/>
+
+</odoo>

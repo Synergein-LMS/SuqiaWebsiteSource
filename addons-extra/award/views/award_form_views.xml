@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		<record id="award_application_form_view" model="ir.ui.view">
+			<field name="name">award.application.form.view</field>
+			<field name="model">award.application.form</field>
+			<field name="arch" type="xml">
+				<form string="Award Application Form" create="0">
+					<header>
+	                    <button name="action_first_review" string="Move to Stage 1" class="btn btn-primary" type="object" states="draft"/>
+	                    <button name="action_second_review" states="first_review" class="btn btn-primary" type="object" string="Move to Stage 2"/>
+	                    <button name="action_final_review" states="second_review" class="btn btn-primary" type="object" string="Move to Final Review"/>
+	                    <button name="action_finalist" states="final_review" class="btn btn-primary" type="object" string="Move to Finalist"/>
+	                    <button name="%(award_application_rejection_action)d" states="draft,first_review,second_review,final_review" class="btn btn-primary" type="action" string="Reject"/>
+	                    <button name="action_print_answers" string="View Application" class="btn btn-primary" type="object"/>
+	                    <button name="print_pdf_report" string="Print Application" class="btn btn-primary" type="object"/>
+	                    <field name="state" widget="statusbar" statusbar_visible="draft,first_review,second_review,final_review,finalist,cancel"/>
+	                </header>
+					<sheet>
+						<div class="oe_title">
+	                        <h1>
+	                            <field name="name" readonly="1"/>
+	                        </h1>
+	                    </div>
+						<group>
+							<group>
+							    <field name="partner_id"/>
+							    <field name="last_updated_by"/>
+							    <field name="last_updated_date"/>
+								<field name="rejection_id" string="Rejected Reason" readonly="1" options="{'no_open':True,'no_create': True}" attrs="{'invisible':[('state', '!=','cancel')]}"/>
+								<field name="rejection_remarks" string="Rejected Remarks" readonly="1" attrs="{'invisible':[('state', '!=','cancel')]}"/>
+							</group>
+							<group>
+								<field name="category_id" options="{'no_open':True,'no_create': True}"/>
+								<field name="sub_category_id" options="{'no_open':True,'no_create': True}"/>
+								<field name="country_id" options="{'no_open':True,'no_create': True}" readonly="1"/>
+								<field name="project_country_id" options="{'no_open':True,'no_create': True}" readonly="1"/>
+							</group>
+						</group>
+						<notebook>
+		                	<page string="Remarks">
+		                		<field name="reviewer_line">
+		                			<tree string="Remarks" editable="bottom">
+								    	<field name="name"/>
+								    	<field name="review_datetime"/>
+								    	<field name="user_id"/>
+								    </tree>
+		                		</field>
+		                	</page>
+		                	<page string="Other Info">
+							<group>
+							    <field name="created_date"/>
+								<field name="survey_id"/>
+    							<field name="token"/>
+							    <field name="application_id" domain="[('partner_id','=', partner_id)]" readonly="1"/>
+							</group>
+		                	</page>
+		                </notebook>
+	                </sheet>
+	                <div class="oe_chatter">
+		                <field name="message_follower_ids" widget="mail_followers"/>
+		                <field name="activity_ids" widget="mail_activity"/>
+		                <field name="message_ids" widget="mail_thread"/>
+		            </div>
+				</form>
+			</field>
+		</record>
+
+		<record id="award_application_tree_view" model="ir.ui.view">
+	       	<field name="name">award.application.tree.view</field>
+			<field name="model">award.application.form</field>
+			<field name="arch" type="xml">
+	            <tree string="Award Application Form" create="0">
+	                <field name="name"/>
+	                <field name="partner_id"/>
+	                 <field name="created_date"/>
+				    <field name="last_updated_by"/>
+				    <field name="last_updated_date"/>
+				    <field name="state"/>
+	            </tree>
+	        </field>
+	    </record>
+
+	    <record id="action_award_application_form" model="ir.actions.act_window">
+	        <field name="name">Award Applications</field>
+	        <field name="type">ir.actions.act_window</field>
+	        <field name="res_model">award.application.form</field>
+	        <field name="view_mode">tree,form,calendar,kanban,pivot,graph,activity</field>
+	        <field name="context">{}</field>
+	        <field name="help" type="html">
+	            <p class="o_view_nocontent_smiling_face">
+	                Create a new Award Application Form
+	            </p>
+	        </field>
+	    </record>
+
+	    <record id="view_award_application_form_calendar" model="ir.ui.view">
+            <field name="name">award.application.form.calendar</field>
+            <field name="model">award.application.form</field>
+            <field name="arch" type="xml">
+                <calendar string="Award application Form" date_start="created_date" color="state" hide_time="true" event_limit="5">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="award_application_form_view_activity" model="ir.ui.view">
+            <field name="name">award.application.form.activity</field>
+            <field name="model">award.application.form</field>
+            <field name="arch" type="xml">
+                <activity string="Award Application Form">
+                    <templates>
+                        <div t-name="activity-box">
+                            <div>
+                                <field name="name" display="full"/>
+                                <field name="partner_id" muted="1" display="full"/>
+                            </div>
+                        </div>
+                    </templates>
+                </activity>
+            </field>
+        </record>
+
+        <record id="view_award_application_form_filter" model="ir.ui.view">
+	        <field name="name">award.application.form.list.select</field>
+	        <field name="model">award.application.form</field>
+	        <field name="arch" type="xml">
+	            <search string="Award application Form">
+	                <field name="name"/>
+	                <field name="partner_id"/>
+	                <group expand="0" string="Group By">
+	                    <filter name="state" string="State" domain="[]" context="{'group_by':'state'}"/>
+	                    <filter name="country" string="Country" domain="[]" context="{'group_by':'country_id'}"/>
+	                    <filter name="project_country" string="project Country" domain="[]" context="{'group_by':'project_country_id'}"/>
+	                    <filter name="created_date" string="Created Date" domain="[]" context="{'group_by':'created_date'}"/>
+	                </group>
+	           </search>
+	        </field>
+	    </record>
+
+	    <menuitem id="award_application_menu_root"
+            name="Awards"
+            groups="award.group_award_application_user"
+            web_icon="award,static/description/icon.png"
+            sequence="10"/>
+
+	    <menuitem id="menu_award"
+	      name="Award Applications"
+	      parent="award_application_menu_root"
+	      action="action_award_application_form"
+	      sequence="3"/>
+
+</odoo>

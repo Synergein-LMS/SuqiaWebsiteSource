@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="award_category_form_view" model="ir.ui.view">
+        <field name="name">award.category.form.view</field>
+        <field name="model">award.category</field>
+        <field name="arch" type="xml">
+            <form string="Award Category Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="question_id" options="{'no_open':True,'no_create': True}"/>
+                            <field name="label_id" options="{'no_open':True,'no_create': True}"/>
+                            <field name="sub_category_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="award_category_tree_view" model="ir.ui.view">
+        <field name="name">award.category.tree.view</field>
+        <field name="model">award.category</field>
+        <field name="arch" type="xml">
+            <tree string="Award Category">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_award_category" model="ir.actions.act_window">
+        <field name="name">Award Category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">award.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Award Category
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_award_configuration"
+      name="Configuration"
+      parent="award_application_menu_root"
+      groups="award.group_award_application_manager"
+      sequence="4"/>
+
+      <menuitem id="menu_award_category_configuration"
+      name="Award Category"
+      parent="menu_award_configuration"
+      action="action_award_category"
+      sequence="1"/>
+
+    <record id="award_sub_category_form_view" model="ir.ui.view">
+        <field name="name">award.sub.category.form.view</field>
+        <field name="model">award.sub.category</field>
+        <field name="arch" type="xml">
+            <form string="Award Sub Category Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="label_id" options="{'no_open':True,'no_create': True}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="award_sub_category_tree_view" model="ir.ui.view">
+        <field name="name">award.sub.category.tree.view</field>
+        <field name="model">award.sub.category</field>
+        <field name="arch" type="xml">
+            <tree string="Award Sub Category">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_award_sub_category" model="ir.actions.act_window">
+        <field name="name">Award Sub Category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">award.sub.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a New Sub Award Category
+            </p>
+        </field>
+    </record>
+
+      <menuitem id="menu_award_sub_category_configuration"
+      name="Award Sub Category"
+      parent="menu_award_configuration"
+      action="action_award_sub_category"
+      sequence="2"/>
+
+    <!-- Rejection Reason -->
+
+    <record id="rejection_reason_form_view" model="ir.ui.view">
+        <field name="name">rejection.reason.form.view</field>
+        <field name="model">rejection.reason</field>
+        <field name="arch" type="xml">
+            <form string="rejection reason Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="rejection_reason_tree_view" model="ir.ui.view">
+        <field name="name">rejection.reason.tree.view</field>
+        <field name="model">rejection.reason</field>
+        <field name="arch" type="xml">
+            <tree string="Rejection Reason">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_rejection_reason" model="ir.actions.act_window">
+        <field name="name">Rejection Reasons</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rejection.reason</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a New Rejection Reason Record
+            </p>
+        </field>
+    </record>
+
+      <menuitem id="menu_rejection_reason_configuration"
+      name="Rejection Reasons"
+      parent="menu_award_configuration"
+      action="action_rejection_reason"
+      sequence="3"/>
+
+
+</odoo>

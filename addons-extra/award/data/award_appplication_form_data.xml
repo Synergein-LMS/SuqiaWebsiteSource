@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><data noupdate="0">
+
+    <record model="survey.survey" id="award_application_form">
+        <field name="title">AWARD APPLICATION FORM</field>
+        <field name="state">open</field>
+        <field name="access_mode">public</field>
+        <field name="users_can_go_back" eval="True" />
+        <field name="questions_layout">page_per_section</field>
+        <field name="users_login_required" eval="True" />
+        <field name="thank_you_message">Your application has been submitted.</field>
+        <field name="description" type="html">
+            <br/>
+            <h4 style="color: rgb(211, 184, 93); font-weight: bold;">WELCOME TO THE MOHAMMED BIN RASHID AL MAKTOUM GLOBAL WATER AWARD</h4>
+            <p style="color: rgb(121,121,121);">
+                You can begin filling out the application form. You may return to make changes to the form at your convenience. Please ensure you have completed all the required fields and made all changes before the application deadline. Once you have submitted your final application, you will not be able to make any changes.<br/><br/>
+
+                We encourage you to read our <a href="/faqs">FAQs</a> and <a href="/evaluation-criteria">Evaluation Criteria</a> and <a href="/guidelines-and-award-t-c">Application Guidelines and Terms and Conditions</a> before you begin the application process. Should you have any queries or technical issues, please contact us at <a href="mailto:award@suqia.ae">award@suqia.ae</a>
+                <br/>
+                <br/>
+                <b>Note : Only English characters are accepted. Please have the relavent documents in the following formats.</b>
+            </p>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th class="text-center">Document</th>
+                        <th class="text-center">Allowed Types</th>
+                        <th class="text-center">Max. Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">Passport</td>
+                        <td class="text-center">Jpeg,Png,PDF</td>
+                        <td class="text-center">2 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Main Application Form</td>
+                        <td class="text-center">PDF</td>
+                        <td class="text-center">10 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Supporting Document 1</td>
+                        <td class="text-center">PDF</td>
+                        <td class="text-center">10 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Supporting Document 2</td>
+                        <td class="text-center">PDF</td>
+                        <td class="text-center">10 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Trade License</td>
+                        <td class="text-center">Jpeg,Png,PDF</td>
+                        <td class="text-center">5 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Endorsement Letter</td>
+                        <td class="text-center">Jpeg,Png,PDF</td>
+                        <td class="text-center">5 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Core Team Structure</td>
+                        <td class="text-center">Jpeg,Png,PDF</td>
+                        <td class="text-center">5 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Video Links</td>
+                        <td class="text-center">Hyperlink</td>
+                        <td class="text-center">-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </field>
+    </record>
+
+    <!-- Page1: Contact Details -->
+    <record model="survey.question" id="award_application_form_p1">
+        <field name="title">A. Contact Details</field>
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">1</field>
+        <field name="question_type" eval="False" />
+        <field name="is_page" eval="True" />
+        <field name="description" type="html">
+            <p>Please enter the details of the contact person for this application.<br/>
+            These details will be used to notify you on the status of your application, or contact you for further information if required. Kindly ensure all numbers and email addresses are valid.</p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p1_q2">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">1</field>
+        <field name="title">Name of contact for this application</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+
+    <record model="survey.question" id="application_p1_q1">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">2</field>
+        <field name="title">Title of contact for this application
+        </field>
+        <field name="question_type">simple_choice</field>
+        <field name="display_mode">dropdown</field>
+        <field name="constr_mandatory" eval="False"/>
+    </record>
+    <record model="survey.label" id="application_q1_s1">
+        <field name="question_id" ref="application_p1_q1"/>
+        <field name="sequence">1</field>
+        <field name="value">Dr</field>
+    </record>
+    <record model="survey.label" id="application_q1_s2">
+        <field name="question_id" ref="application_p1_q1"/>
+        <field name="sequence">2</field>
+        <field name="value">Miss</field>
+    </record>
+    <record model="survey.label" id="application_q1_s3">
+        <field name="question_id" ref="application_p1_q1"/>
+        <field name="sequence">3</field>
+        <field name="value">Mr.</field>
+    </record>
+    <record model="survey.label" id="application_q1_s4">
+        <field name="question_id" ref="application_p1_q1"/>
+        <field name="sequence">4</field>
+        <field name="value">Mrs.</field>
+    </record>
+    <record model="survey.label" id="application_q1_s5">
+        <field name="question_id" ref="application_p1_q1"/>
+        <field name="sequence">5</field>
+        <field name="value">Ms.</field>
+    </record>
+
+
+    <!-- <record model="survey.question" id="application_p1_q3">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">3</field>
+        <field name="title">Middle Name</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="False"/>
+    </record>
+
+    <record model="survey.question" id="application_p1_q4">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">4</field>
+        <field name="title">Last Name</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record> -->
+    <record model="survey.question" id="application_p1_q5">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">5</field>
+        <field name="title">Mobile Phone Number</field>
+        <field name="question_type">textbox</field>
+        <field name="validation_is_sh_textbox_pattern" eval="False"/>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="description" type="html">
+            <p>Please include the country code</p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p1_q7">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">7</field>
+        <field name="title">Alternate Mobile Phone Number (Optional)</field>        
+        <field name="question_type">textbox</field>
+        <field name="validation_is_sh_textbox_pattern" eval="True"/>
+        <field name="validation_sh_textbox_pattern">(\+)\d{2,}[0-9]{5,}</field>
+        <field name="validation_sh_textbox_placeholder">Example: +9715566778891</field>
+        <field name="constr_mandatory" eval="False"/>
+        <field name="description" type="html">
+            <p>Please include the country code</p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p1_q9">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">9</field>
+        <field name="title">Office Number (Optional)</field>
+        <field name="question_type">textbox</field>
+        <field name="validation_is_sh_textbox_pattern" eval="True"/>
+        <field name="validation_sh_textbox_pattern">(\+)\d{2,}( )[0-9]{5,}</field>
+        <field name="validation_sh_textbox_placeholder">Example: +971 4004101</field>
+        <field name="constr_mandatory" eval="False"/>
+        <field name="description" type="html">
+            <p>Please include the country code</p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p1_q10">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">10</field>
+        <field name="title">Email</field>
+        <field name="question_type">textbox</field>
+        <field name="validation_email" eval="True"/>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+    <record model="survey.question" id="application_p1_q11">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">11</field>
+        <field name="title">Alternate or Additional Email(s) (Optional)</field>
+        <field name="question_type">textbox</field>
+        <field name="validation_email" eval="True"/>
+        <field name="constr_mandatory" eval="False"/>
+    </record>
+    <!-- Page2: Applicant Details -->
+    <record model="survey.question" id="award_application_form_p2">
+        <field name="title">B. Applicant Details</field>
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">12</field>
+        <field name="question_type" eval="False" />
+        <field name="is_page" eval="True" />
+        <field name="description" type="html">
+            <p>If you are applying to either the "Innovative Projects Award" or "Innovative Resarch and Development Award" or “Innovative Crisis Solutions Award” categories, please enter the details of the organization you are representing in this application.<br/>
+                If you are applying to the "Innovative Individual Award" category, please enter the applicant/technology owner/developer details.
+            </p>
+        </field>
+    </record>
+
+    <record model="survey.question" id="application_p2_q13">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">13</field>
+        <field name="title">Name of Applicant</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+    <record model="survey.question" id="application_p2_q13_new">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">13</field>
+        <field name="title">Country/Nationality</field>
+        <field name="question_type">simple_choice</field>
+        <field name="display_mode">dropdown</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+
+    <record model="survey.question" id="application_p2_q14">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">14</field>
+        <field name="title">Address Details</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="description" type="html">
+            <h4 style="font-family: 'Montserrat','Odoo Unicode Support Noto','sans-serif';color:#212529 !important;">Address<span class="text-danger"> *</span></h4>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p2_q15">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">15</field>
+        <field name="title">City</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+    <record model="survey.question" id="application_p2_q16">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">16</field>
+        <field name="title">Country</field>
+        <field name="question_type">simple_choice</field>
+        <field name="display_mode">dropdown</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+    <record model="survey.question" id="application_p2_q17">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">17</field>
+        <field name="title">Business Website</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="False"/>
+    </record>
+    <record model="survey.question" id="application_p2_q18">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">18</field>
+        <field name="title">How did you hear about the Mohammed bin Rashid Al Maktoum Global Water Award?</field>
+        <field name="question_type">multiple_choice</field>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="comments_allowed" eval="True"/>
+        <field name="comments_message">If others, please specify</field>
+        <!-- <field name="comment_count_as_answer" eval="True"/> -->
+        <field name="description" type="html">
+            <p>(Please select all that apply)</p>
+        </field>
+    </record>
+    <record model="survey.label" id="application_q18_s7">
+        <field name="question_id" ref="application_p2_q18"/>
+        <field name="sequence">1</field>
+        <field name="value">Suqia Website</field>
+    </record>
+    <record model="survey.label" id="application_q18_s2">
+        <field name="question_id" ref="application_p2_q18"/>
+        <field name="sequence">2</field>
+        <field name="value">Email</field>
+    </record>
+    <record model="survey.label" id="application_q18_s5">
+        <field name="question_id" ref="application_p2_q18"/>
+        <field name="sequence">3</field>
+        <field name="value">Referral/Word-of-mouth</field>
+    </record>
+    <record model="survey.label" id="application_q18_s3">
+        <field name="question_id" ref="application_p2_q18"/>
+        <field name="sequence">4</field>
+        <field name="value">LinkedIn</field>
+    </record>
+    <record model="survey.label" id="application_q18_s6">
+        <field name="question_id" ref="application_p2_q18"/>
+        <field name="sequence">5</field>
+        <field name="value">Twitter/Instagram/Facebook</field>
+    </record>
+    <record model="survey.label" id="application_q18_s1">
+        <field name="question_id" ref="application_p2_q18"/>
+        <field name="sequence">6</field>
+        <field name="value">Conference and/or Event (Please provide details of the conference and/or event)</field>
+    </record>
+    <record model="survey.label" id="application_q18_s4">
+        <field name="question_id" ref="application_p2_q18"/>
+        <field name="sequence">7</field>
+        <field name="value">Other (Please provide details)</field>
+    </record>
+
+    <!-- Page3: Project Details -->
+    <record model="survey.question" id="award_application_form_p3">
+        <field name="title">C. Project Details</field>
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">19</field>
+        <field name="question_type" eval="False" />
+        <field name="is_page" eval="True" />
+        <field name="description" type="html">
+            <p>Please fill the details related to the Project or Technology being represented in this application.<br/>
+                If your technology/project/product has been implemented in more than one site, please fill in the details of one site below, preferably the largest or the one with the highest number of beneficiaries, and elaborate further on the other locations in the Main Application attachment in Section D - Attachments.
+            </p>
+        </field>
+    </record>
+
+    <record model="survey.question" id="application_p3_q20">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">20</field>
+        <field name="title">Project Title</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+    <record model="survey.question" id="application_p3_q21">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">21</field>
+        <field name="title">Project Address</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+    <record model="survey.question" id="application_p3_q22">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">22</field>
+        <field name="title">Project City</field>
+        <field name="question_type">textbox</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+    <record model="survey.question" id="application_p3_q23">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">23</field>
+        <field name="title">Project Country</field>
+        <field name="question_type">simple_choice</field>
+        <field name="display_mode">dropdown</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+    <record model="survey.question" id="application_p3_q23_new">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">23</field>
+        <field name="title">Project Start Date</field>
+        <field name="question_type">date</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+    <record model="survey.question" id="application_p3_q24">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">24</field>
+        <field name="title">Project Completion date (If applicable)</field>
+        <field name="question_type">date</field>
+        <field name="constr_mandatory" eval="False"/>
+    </record>
+    <record model="survey.question" id="application_p3_q25">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">25</field>
+        <field name="title">Is the project currently in development stage or ready to be implemented/commercialized?</field>
+        <field name="question_type">simple_choice</field>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="display_mode">columns</field>
+    </record>
+    <record model="survey.label" id="application_q25_s1">
+        <field name="question_id" ref="application_p3_q25"/>
+        <field name="sequence">1</field>
+        <field name="value">Research and Development Stage</field>
+    </record>
+    <record model="survey.label" id="application_q25_s2">
+        <field name="question_id" ref="application_p3_q25"/>
+        <field name="sequence">2</field>
+        <field name="value">Implemented/Commercialized</field>
+    </record>
+    <record model="survey.label" id="application_q25_s3">
+        <field name="question_id" ref="application_p3_q25"/>
+        <field name="sequence">3</field>
+        <field name="value">Ready to be Implemented/Commercialized</field>
+    </record>
+    <record model="survey.question" id="application_p3_q26">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">26</field>
+        <field name="title">Has this project/technology been implemented with through a collaboration/ partnership of two or more entities? If yes, please provide details of both the entities, and the countries of origin for each.</field>
+        <field name="question_type">simple_choice</field>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="display_mode">columns</field>
+        <field name="comments_allowed" eval="True"/>
+        <field name="comments_message">If yes, please specify the details</field>
+    </record>
+    <record model="survey.label" id="application_q26_s2">
+        <field name="question_id" ref="application_p3_q26"/>
+        <field name="sequence">1</field>
+        <field name="value">Yes</field>
+    </record>
+    <record model="survey.label" id="application_q26_s1">
+        <field name="question_id" ref="application_p3_q26"/>
+        <field name="sequence">2</field>
+        <field name="value">No</field>
+    </record>
+
+    <record model="survey.question" id="application_p3_q27">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">27</field>
+        <field name="title">Award Category (Please select only one Category representing your application)</field>
+        <field name="question_type">simple_choice</field>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="display_mode">columns</field>
+    </record>
+    <record model="survey.label" id="application_q27_s1">
+        <field name="question_id" ref="application_p3_q27"/>
+        <field name="sequence">1</field>
+        <field name="value">Innovative Individual Award</field>
+    </record>
+    <record model="survey.label" id="application_q27_s2">
+        <field name="question_id" ref="application_p3_q27"/>
+        <field name="sequence">2</field>
+        <field name="value">Innovative Projects Award</field>
+    </record>
+    <record model="survey.label" id="application_q27_s3">
+        <field name="question_id" ref="application_p3_q27"/>
+        <field name="sequence">3</field>
+        <field name="value">Innovative Research &amp; Development Award</field>
+    </record>
+    <record model="survey.label" id="application_q27_s4">
+        <field name="question_id" ref="application_p3_q27"/>
+        <field name="sequence">4</field>
+        <field name="value">Innovative Crisis Solutions Award</field>
+    </record>
+
+    <!-- New Questions -->
+
+    <record model="survey.question" id="application_p3_q27_1">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">27</field>
+        <field name="title">Innovative Individual Award Subcategory *</field>
+        <field name="question_type">simple_choice</field>
+        <field name="constr_mandatory" eval="False"/>
+        <field name="conditional" eval="True"/>
+        <field name="conditional_question_id" ref="application_p3_q27"/>
+        <field name="conditional_option_id" ref="application_q27_s1"/>
+    </record>
+    <record model="survey.label" id="application_q27_1_s1">
+        <field name="question_id" ref="application_p3_q27_1"/>
+        <field name="sequence">1</field>
+        <field name="value">Distinguished Researcher Award</field>
+    </record>
+    <record model="survey.label" id="application_q27_1_s2">
+        <field name="question_id" ref="application_p3_q27_1"/>
+        <field name="sequence">2</field>
+        <field name="value">Youth Award</field>
+    </record>
+
+    <record model="survey.question" id="application_p3_q27_2">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">27</field>
+        <field name="title">Innovative Projects Award Subcategory *</field>
+        <field name="question_type">simple_choice</field>
+        <field name="constr_mandatory" eval="False"/>
+        <field name="conditional" eval="True"/>
+        <field name="conditional_question_id" ref="application_p3_q27"/>
+        <field name="conditional_option_id" ref="application_q27_s2"/>
+    </record>
+    <record model="survey.label" id="application_q27_2_s1">
+        <field name="question_id" ref="application_p3_q27_2"/>
+        <field name="sequence">1</field>
+        <field name="value">Large Projects Award</field>
+        <!-- <field name="value">Large Projects Award (Total CAPEX above USD 3 million)</field> -->
+    </record>
+    <record model="survey.label" id="application_q27_2_s2">
+        <field name="question_id" ref="application_p3_q27_2"/>
+        <field name="sequence">2</field>
+        <field name="value">Small Projects Award</field>
+        <!-- <field name="value">Small Projects Award (Total CAPEX USD 3 million or below)</field> -->
+    </record>
+
+    <record model="survey.question" id="application_p3_q27_3">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">27</field>
+        <field name="title">Innovative Research &amp; Development Award Subcategory *</field>
+        <field name="question_type">simple_choice</field>
+        <field name="constr_mandatory" eval="False"/>
+        <field name="conditional" eval="True"/>
+        <field name="conditional_question_id" ref="application_p3_q27"/>
+        <field name="conditional_option_id" ref="application_q27_s3"/>
+    </record>
+    <record model="survey.label" id="application_q27_3_s1">
+        <field name="question_id" ref="application_p3_q27_3"/>
+        <field name="sequence">1</field>
+        <field name="value">National Institutions Awards</field>
+    </record>
+    <record model="survey.label" id="application_q27_3_s2">
+        <field name="question_id" ref="application_p3_q27_3"/>
+        <field name="sequence">2</field>
+        <field name="value">International Institutions Awards</field>
+    </record>
+    <record model="survey.question" id="application_p3_q27_4">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">27</field>
+        <field name="title">Innovative Crisis Solutions Award</field>
+        <field name="question_type">simple_choice</field>
+        <field name="conditional" eval="True"/>
+        <field name="conditional_question_id" ref="application_p3_q27_4"/>
+    </record>
+    <record model="survey.question" id="application_p3_q27_new_1">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">27</field>
+        <field name="title">Please provide the number of people who have benefited from the project. (Only applicable to Innovative Crisis Solutions Award and Innovative Projects Award)</field>
+        <field name="question_type">textbox</field>
+    </record>
+    <record model="survey.question" id="application_p3_q27_new_2">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">27</field>
+        <field name="title">Project CAPEX (CAPEX Investment not including operational expenses) if applicable</field>
+        <field name="question_type">textbox</field>
+    </record>
+    <record model="survey.question" id="application_p3_q28">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">28</field>
+        <field name="title">Does the project demostrate a minimum of 3 months measurable results for the project? (Only applicable to Innovative Projects Award)</field>
+        <field name="question_type">simple_choice</field>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="display_mode">columns</field>
+    </record>
+    <record model="survey.label" id="application_q28_s1">
+        <field name="question_id" ref="application_p3_q28"/>
+        <field name="sequence">1</field>
+        <field name="value">No</field>
+    </record>
+    <record model="survey.label" id="application_q28_s2">
+        <field name="question_id" ref="application_p3_q28"/>
+        <field name="sequence">2</field>
+        <field name="value">Not Sure</field>
+    </record>
+    <record model="survey.label" id="application_q28_s3">
+        <field name="question_id" ref="application_p3_q28"/>
+        <field name="sequence">3</field>
+        <field name="value">Yes</field>
+    </record>
+    <record model="survey.label" id="application_q28_s4">
+        <field name="question_id" ref="application_p3_q28"/>
+        <field name="sequence">4</field>
+        <field name="value">N/A</field>
+    </record>
+    <record model="survey.question" id="application_p3_q29">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">29</field>
+        <field name="title">Executive Summary (Please provide a brief description of the objectives, targets, process, deliverables and measurable results - max 500 words. Any additional details can be included in the Main Application Form and Supporting  Documents in the next section - Attachments)</field>
+        <field name="question_type">free_text</field>
+        <field name="constr_mandatory" eval="True"/>
+    </record>
+
+    <!-- Page4: Attachments -->
+    <record model="survey.question" id="award_application_form_p4">
+        <field name="title">D. Attachments</field>
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">30</field>
+        <field name="question_type" eval="False" />
+        <field name="is_page" eval="True" />
+        <field name="description" type="html">
+            <p>Please update relevant documents in the following formats:</p>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th class="text-center">Document</th>
+                        <th class="text-center">Allowed Types</th>
+                        <th class="text-center">Max. Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">Passport</td>
+                        <td class="text-center">Jpeg,Png,PDF</td>
+                        <td class="text-center">2 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Main Application Form</td>
+                        <td class="text-center">PDF</td>
+                        <td class="text-center">10 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Supporting Document 1</td>
+                        <td class="text-center">PDF</td>
+                        <td class="text-center">10 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Supporting Document 2</td>
+                        <td class="text-center">PDF</td>
+                        <td class="text-center">10 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Trade License</td>
+                        <td class="text-center">Jpeg,Png,PDF</td>
+                        <td class="text-center">5 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Endorsement Letter</td>
+                        <td class="text-center">Jpeg,Png,PDF</td>
+                        <td class="text-center">5 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Core Team Structure</td>
+                        <td class="text-center">Jpeg,Png,PDF</td>
+                        <td class="text-center">5 MB</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">Video Links</td>
+                        <td class="text-center">Hyperlink</td>
+                        <td class="text-center">-</td>
+                    </tr>
+                </tbody>
+            </table>
+            <P> Please ensure that individual attachments do not exceed the sizes mentioned in the above table</P>
+        </field>
+    </record>
+
+    <record model="survey.question" id="application_p4_q31">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">31</field>
+        <field name="title">Passport Copy</field>
+        <field name="question_type">binary</field>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="attachment_bool" eval="True"/>
+        <field name="attachment_size">2</field>
+        <field name="attachment_format">['jpeg','png','pdf']</field>
+    </record>
+    <record model="survey.question" id="application_p4_q32">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">32</field>
+        <field name="title">Main Application Form</field>
+        <field name="question_type">binary</field>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="attachment_bool" eval="True"/>
+        <field name="attachment_size">10</field>
+        <field name="attachment_format">['pdf']</field>
+        <field name="description" type="html">
+            <p>Further details on how effective the project or technology between in delivering the intended
+                objectives and demostrated performance, supported by facts and figures on how it has been 
+                successful in meeting or addressing all the <a href="/evaluation-criteria">Evaluation Criteria.</a>
+                <br/>
+                <b>The total attachments
+                    should not exceed 15 pages; A4 size, PDF Format.
+                </b>
+            </p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p4_q33_1">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">33</field>
+        <field name="title">Supporting Document 1</field>
+        <field name="question_type">binary</field>
+        <field name="attachment_bool" eval="True"/>
+        <field name="attachment_size">10</field>
+        <field name="attachment_format">['pdf']</field>
+        <field name="description" type="html">
+            <p>
+                These may include Quantitative and/or Qualitative documents describing the project or technology represented in this application, Process flow diagrams, Technical Specifications Sheets, Laboratory Test Results, Certifications, Press releases/news clippings, Future development plans, etc…
+            </p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p4_q33_2">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">33</field>
+        <field name="title">Supporting Document 2</field>
+        <field name="question_type">binary</field>
+        <field name="attachment_bool" eval="True"/>
+        <field name="attachment_size">10</field>
+        <field name="attachment_format">['pdf']</field>
+        <field name="description" type="html">
+            <p>
+                These may include Quantitative and/or Qualitative documents describing the project or technology represented in this application, Process flow diagrams, Technical Specifications Sheets, Laboratory Test Results, Certifications, Press releases/news clippings, Future development plans, etc…
+            </p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p4_q33_3">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">33</field>
+        <field name="title">Trade License</field>
+        <field name="question_type">binary</field>
+        <field name="attachment_bool" eval="True"/>
+        <field name="attachment_size">5</field>
+        <field name="attachment_format">['jpeg','png','pdf']</field>
+        <field name="description" type="html">
+            <p>
+                Registered Trade License of the organization represented in this application (if applicable).<br/><br/>
+            </p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p4_q33_4">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">33</field>
+        <field name="title">Endorsement Letter</field>
+        <field name="question_type">binary</field>
+        <field name="attachment_bool" eval="True"/>
+        <field name="attachment_size">5</field>
+        <field name="attachment_format">['jpeg','png','pdf']</field>
+        <field name="description" type="html">
+            <p>
+                Endorsement Letter from the organization represented in this application (if applicable).
+            </p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p4_q33_5">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">33</field>
+        <field name="title">Core Team Structure</field>
+        <field name="question_type">binary</field>
+        <field name="attachment_bool" eval="True"/>
+        <field name="attachment_size">5</field>
+        <field name="attachment_format">['jpeg','png','pdf']</field>
+        <field name="description" type="html">
+            <p>
+                Core team structue and members of the project or technology represented in this application (if applicable).
+            </p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p4_q33_6">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">33</field>
+        <field name="title">Video Link 1</field>
+        <field name="question_type">textbox</field>
+        <field name="description" type="html">
+            <p>
+                Video links (Youtube, Google Drive, OneDrive)
+            </p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p4_q33_6_2">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">33</field>
+        <field name="title">Video Link 2</field>
+        <field name="question_type">textbox</field>
+        <field name="description" type="html">
+            <p>
+                Video links (Youtube, Google Drive, OneDrive)
+            </p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p4_q33_6_3">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">33</field>
+        <field name="title">Video Link 3</field>
+        <field name="question_type">textbox</field>
+        <field name="description" type="html">
+            <p>
+                Video links (Youtube, Google Drive, OneDrive)
+            </p>
+        </field>
+    </record>
+    <!-- <record model="survey.question" id="application_p4_q33_6">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">33</field>
+        <field name="title">Video Links</field>
+        <field name="question_type">binary</field>
+        <field name="attachment_bool" eval="True"/>
+        <field name="attachment_size">0.30</field>
+        <field name="attachment_format">['pdf']</field>
+        <field name="description" type="html">
+            <p>
+                Video links (Youtube, Google Drive, OneDrive)
+            </p>
+        </field>
+    </record> -->
+    <!-- Page 5 : Declaration Statement -->
+    <record model="survey.question" id="award_application_form_p5">
+        <field name="title">E. Declaration</field>
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">34</field>
+        <field name="question_type" eval="False" />
+        <field name="is_page" eval="True" />
+        <field name="description" type="html">
+            <p></p>
+        </field>
+    </record>
+    <record model="survey.question" id="application_p4_q35">
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">35</field>
+        <field name="title">Declaration Statement</field>
+        <field name="question_type">multiple_choice</field>
+        <field name="constr_mandatory" eval="True"/>
+        <field name="display_mode">columns</field>
+        <field name="description" type="html">
+            <p>I/We, the participant having applied for the Mohammed bin Rashid Al Maktoum Global Water<br/>
+                Award (MBRGWA) hereby acknowledge and confirm that:<br/>
+                <br/>
+                a. The information submitted in participant's application and attachments is true to the best of<br/>my/our knowledge and accurate.<br/>
+                b. I/We shall adhere to the all <a href="/guidelines-and-award-t-c">Award Terms and Conditions and General Application Guidelines</a><br/>
+                   stipulated by suqia.
+                <br/><br/>
+                On Behalf of Applicant/Organization
+            </p>
+        </field>
+    </record>
+    <record model="survey.label" id="application_q35_s1">
+        <field name="question_id" ref="application_p4_q35"/>
+        <field name="sequence">1</field>
+        <field name="value">I agree</field>
+    </record>
+    <record model="survey.question" id="award_application_form_p6">
+        <field name="title">F. Final Submission</field>
+        <field name="survey_id" ref="award_application_form"/>
+        <field name="sequence">36</field>
+        <field name="question_type" eval="False" />
+        <field name="is_page" eval="True"/>
+         <field name="description" type="html">
+            <p>
+                <h5>Are you sure you want to submit your application? No further changes can be made to the application once it is submitted. </h5>
+            </p>
+        </field>
+    </record>
+</data>
+</odoo>

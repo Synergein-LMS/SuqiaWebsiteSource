@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>        
+
+      <report id="action_reconciliation_xml_report"
+        string="DubaiPay Reconciliation Report"
+        model="dubaipay.reconciliation"
+        report_type="qweb-xml"
+        file="suqia_dubaipay_reconciliation.reconciliation_xml_report"
+        name="suqia_dubaipay_reconciliation.reconciliation_xml_report"/>
+
+    </data>
+</odoo>

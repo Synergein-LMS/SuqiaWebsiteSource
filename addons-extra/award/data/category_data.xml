@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        
+
+        <!-- SUB Category -->
+        <record id="sub_category_data_1" model="award.sub.category">
+            <field name="name">LARGE PROJECTS AWARD</field>
+            <field name="label_id" ref="award.application_q27_2_s1"/>
+        </record>
+        <record id="sub_category_data_2" model="award.sub.category">
+            <field name="name">SMALL PROJECTS AWARD</field>
+            <field name="label_id" ref="award.application_q27_2_s2"/>
+        </record>
+        <record id="sub_category_data_3" model="award.sub.category">
+            <field name="name">DISTINGUISHED RESEACHER AWARD</field>
+            <field name="label_id" ref="award.application_q27_1_s1"/>
+        </record>
+        <record id="sub_category_data_4" model="award.sub.category">
+            <field name="name">YOUTH AWARD</field>
+            <field name="label_id" ref="award.application_q27_1_s2"/>
+        </record>
+        <record id="sub_category_data_5" model="award.sub.category">
+            <field name="name">NATIONAL INSTITUTIONS AWARD</field>
+            <field name="label_id" ref="award.application_q27_3_s1"/>
+        </record>
+        <record id="sub_category_data_6" model="award.sub.category">
+            <field name="name">INTERNATIONAL INSTITUTIONS AWARD</field>
+            <field name="label_id" ref="award.application_q27_3_s2"/>
+        </record>
+
+        <!-- Category -->
+        <record id="category_data_1" model="award.category">
+            <field name="name">INNOVATIVE INDIVIDUAL AWARD</field>
+            <field name="question_id" ref="award.application_p3_q27_1"/>
+            <field name="label_id" ref="award.application_q27_s1"/>
+            <field name="sub_category_ids" eval="[(6, 0, [ref('award.sub_category_data_3'), ref('award.sub_category_data_4')])]"/>
+        </record>
+        <record id="category_data_2" model="award.category">
+            <field name="name">INNOVATIVE PROJECTS AWARD</field>
+            <field name="question_id" ref="award.application_p3_q27_2"/>
+            <field name="label_id" ref="award.application_q27_s2"/>
+            <field name="sub_category_ids" eval="[(6, 0, [ref('award.sub_category_data_1'), ref('award.sub_category_data_2')])]"/>
+        </record>
+        <record id="category_data_3" model="award.category">
+            <field name="name">INNOVATIVE RESEARCH &amp; DEVELOPMENT AWARD</field>
+            <field name="question_id" ref="award.application_p3_q27_3"/>
+            <field name="label_id" ref="award.application_q27_s3"/>
+            <field name="sub_category_ids" eval="[(6, 0, [ref('award.sub_category_data_5'), ref('award.sub_category_data_6')])]"/>
+        </record>
+        <record id="category_data_4" model="award.category">
+            <field name="name">INNOVATIVE CRISIS SOLUTIONS AWARD</field>
+            <field name="label_id" ref="award.application_q27_s4"/>
+            <field name="question_id" ref="award.application_p3_q27_4"/>
+        </record>
+    </data>
+</odoo>

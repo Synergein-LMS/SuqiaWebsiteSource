@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Survey Templates -->
+
+    <template id="survey.survey_init" name="Survey">
+        <t t-call="survey.layout">
+            <div class="wrap">
+                <div class="oe_structure" id="oe_structure_survey_init_1"/>
+                <div class="container">
+                    <t t-if="answer.test_entry" t-call="survey.back" />
+                    <div class='jumbotron mt32'>
+                        <h1 t-field='survey.title' />
+                        <div t-field='survey.description' class="oe_no_empty"/>
+                        <div t-if="survey.is_time_limited">
+                            <p>
+                                <span>Time limit for this survey: </span>
+                                <span class="font-weight-bold text-danger" t-field="survey.time_limit" t-options="{'widget': 'duration', 'unit': 'minute'}"></span>
+                            </p>
+                        </div>
+                        <a role="button" class="btn btn-primary btn-lg" t-att-href="'/survey/fill/%s/%s' % (survey.access_token, answer.token)">
+                            <t t-if="survey.certificate">
+                                Start Certification
+                            </t>
+                            <t t-else="">
+                                Start
+                            </t>
+                        </a>
+                    </div>
+                </div>
+                <div class="oe_structure" id="oe_structure_survey_init_2"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="page_extended" inherit_id="survey.page" name="Page">
+        <xpath expr="//form[hasclass('js_surveyform')]" position="replace">
+            <form role="form" method="post" class="js_surveyform" t-att-name="survey.id"
+                    t-att-action="'/survey/fill/%s/%s' % (survey.access_token, answer.token)"
+                    t-att-data-prefill="'/survey/prefill/%s/%s?page_or_question_id=%s' % (survey.access_token, answer.token, page_or_question_id)"
+                    t-att-data-validate="'/survey/validate/%s/%s' % (survey.access_token, answer.token)"
+                    t-att-data-submit="'/survey/submit/%s/%s' % (survey.access_token, answer.token)">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <input type="hidden" name="token" t-att-value="answer.token" />
+
+                <t t-if="survey.questions_layout == 'one_page'">
+                    <t t-foreach='survey.question_and_page_ids' t-as='question'>
+                        <h2 t-if="question.is_page" t-field='question.title' class="o_survey_title" />
+                        <t t-if="not question.is_page and question in answer.question_ids" t-call="survey.question" />
+                    </t>
+
+                    <div class="text-center mt16 mb256">
+                        <button type="submit" class="btn btn-primary" name="button_submit" value="finish">Submit</button>
+                    </div>
+                </t>
+
+                <t t-if="survey.questions_layout == 'page_per_section'">
+                    <h2 t-field='page.title' class="o_survey_title" />
+                    <div t-field='page.description' class="oe_no_empty"/>
+
+                    <input type="hidden" name="page_id" t-att-value="page.id" />
+                    <t t-foreach='page.question_ids' t-as='question'>
+                        <t t-if="question in answer.question_ids" t-call="survey.question" />
+                    </t>
+
+                    <div class="text-center mt16 mb256">
+                        <button t-if="last" type="submit" class="btn btn-primary" name="button_submit" value="finish">Yes, Submit</button>
+                        <button t-if="survey.users_can_go_back and page != survey.page_ids[0] and not last" type="submit" class="btn btn-secondary" name="button_submit" value="previous">Save and Go Back</button>
+                        <button t-if="last" type="submit" class="btn btn-secondary" name="button_submit" value="previous">No, Save and Go Back</button>
+                        <button t-if="not last" type="submit" class="btn btn-primary" name="button_submit" value="next">Save and Continue</button>
+                        <button t-if="not last" type="submit" class="btn btn-danger" name="button_submit" value="save_exit">Save and Exit</button>
+                        <button t-if="last" type="submit" class="btn btn-danger" name="button_submit" value="save_exit">No, Save and Exit</button>
+                    </div>
+                </t>
+
+                <t t-if="survey.questions_layout == 'page_per_question'">
+                    <input type="hidden" name="question_id" t-att-value="question.id" />
+                    <t t-call="survey.question" />
+
+                    <div class="text-center mt16 mb256">
+                        <button t-if="survey.users_can_go_back and question != answer.question_ids[0]" type="submit" class="btn btn-secondary" name="button_submit" value="previous">Previous question</button>
+                        <button t-if="not last" type="submit" class="btn btn-primary" name="button_submit" value="next">Next question</button>
+                        <button t-if="last" type="submit" class="btn btn-primary" name="button_submit" value="finish">Submit</button>
+                    </div>
+                </t>
+            </form>
+        </xpath>
+    </template>
+
+</odoo>

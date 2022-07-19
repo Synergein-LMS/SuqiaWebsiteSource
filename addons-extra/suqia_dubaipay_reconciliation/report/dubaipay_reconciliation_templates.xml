@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+    <template id="reconciliation_xml_report_docs">
+        <Reconciliation>
+            <ServiceProviderDetails>
+                <SPCODE>SUQIA</SPCODE>
+                <SERVCODE>SUQIAC</SERVCODE>
+            </ServiceProviderDetails>
+            <TransactionDetails>
+              <Transaction  t-foreach="o.generate_xml_report_values().get('transaction_details')" t-as="trans">
+                <SPTRN t-esc="trans.get('SPTRN')"/>
+                <TransDate t-esc="trans.get('TransDate')"/>
+                <Amount t-esc="trans.get('Amount')"/>
+                <DEGTRN t-esc="trans.get('DEGTRN')"/>
+                <Status t-esc="trans.get('Status')"/>
+                <PaymentMethod t-esc="trans.get('PaymentMethod')"/>
+              </Transaction>
+            </TransactionDetails>
+        </Reconciliation>
+   </template>
+
+   <template id="reconciliation_xml_report">
+      <t t-foreach="docs" t-as="o">
+          <t t-call="suqia_dubaipay_reconciliation.reconciliation_xml_report_docs"/>
+      </t>
+  </template>
+
+</odoo>

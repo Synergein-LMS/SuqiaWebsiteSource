@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_application_pdf_document">
+    <t t-call="web.external_layout">
+        <div class="page">
+            <div class="oe_structure"/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <!-- <t t-set="i" t-value="1"/> -->
+            <h2>AWARD APPLICATION FORM</h2>
+            <br/>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <t t-foreach="o.prepare_answes_printout().get('value')" t-as="line">
+                    <tr>
+                        <br/>
+                        <h4><strong><span t-esc="line.get('qn')"/></strong></h4>
+                        <span t-esc="line.get('ans')"/><br/>
+                    </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </t>
+</template>
+
+<template id="report_application_pdf">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="award.report_application_pdf_document"/>
+        </t>
+    </t>
+</template>
+</odoo>
